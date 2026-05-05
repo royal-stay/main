@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title data-i18n="page_title">Royal Stay - شاليهات فاخرة في مراسي وهاسيندا باي</title>
+    <meta name="description" data-i18n="meta_desc" content="Royal Stay توفر شاليهات فاخرة للإيجار في مراسي وهاسيندا باي. تجربة إقامة راقية مع حجز سريع وخدمة احترافية.">
+    <meta name="theme-color" content="#0A0F1E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --deep: #060B14;
+            --text: #F8FAFC;
+            --muted: #94A3B8;
+            --gold: #C9A050;
+            --gold-light: #E0BC6B;
+            --gold-soft: rgba(201, 160, 80, 0.15);
+            --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--deep);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color:inherit; text-decoration:none; }
+        img { display:block; max-width:100%; }
+        .container { width: min(1280px, 92%); margin-inline: auto; }
+
+        /* NAVBAR */
+        .navbar {
+            position: fixed; top:0; left:0; right:0; z-index:1000;
+            padding: 0.7rem 0; transition: all var(--transition);
+            background: rgba(6,11,20,0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* العلامة التجارية – أفقية دائمًا */
+        .brand {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            text-align: start;
+            min-width: max-content;
+        }
+        .brand img {
+            width: 40px; height: 40px; border-radius: 14px; background: #fff;
+            border: 2px solid var(--gold); box-shadow: 0 8px 20px rgba(201,160,80,0.2);
+            flex-shrink: 0;
+        }
+        .brand .name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .brand .name strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .brand .name span {
+            font-size: 0.6rem;
+            color: var(--muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* حاوية الأزرار (اللغة + القائمة) */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* روابط القائمة */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            padding:0.5rem 0.9rem; border-radius:100px; font-weight:700;
+            font-size:0.8rem; transition:all var(--transition); color:#E2E8F0;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background:rgba(255,255,255,0.08); color:#fff;
+        }
+        .nav-cta {
+            background: linear-gradient(135deg, #B28A30, #D4A843);
+            color: #fff !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px -5px rgba(201,160,80,0.6);
+            font-weight: 800;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #D4A843, #E0BC6B);
+        }
+
+        /* زر اللغة */
+        .lang-btn {
+            padding:0.5rem 0.9rem;
+            border-radius:100px;
+            font-weight:700;
+            font-size:0.8rem;
+            transition:all var(--transition);
+            cursor:pointer;
+            background: rgba(201,160,80,0.08);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .lang-btn:hover {
+            background: var(--gold);
+            color: #0A0F1E;
+            border-color: var(--gold);
+        }
+
+        /* زر الهامبرغر */
+        .menu-btn {
+            display: none;
+            width:38px; height:38px; border-radius:12px;
+            background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+            color:#fff; font-size:1.2rem; cursor:pointer;
+        }
+
+        /* القائمة المنسدلة في الموبايل */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: grid;
+                place-items: center;
+            }
+            .nav-actions {
+                order: 1;
+            }
+            .nav-links {
+                position: fixed;
+                top: 65px;
+                left: 0.8rem;
+                right: 0.8rem;
+                background: rgba(6,11,20,0.95);
+                backdrop-filter: blur(20px);
+                border-radius: 2rem;
+                padding: 1.2rem;
+                flex-direction: column;
+                align-items: stretch;
+                display: none;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                order: 3;
+            }
+            .nav-links.open { display: flex; }
+            .brand { order: 0; }
+        }
+
+        /* HERO – باقي التنسيقات كما هي */
+        .hero {
+            min-height:100vh; display:flex; align-items:center; position:relative;
+            overflow:hidden; isolation:isolate; padding:7rem 0 3rem;
+        }
+        .hero::before {
+            content:''; position:absolute; inset:0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(201,160,80,0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(15,23,42,0.8) 0%, transparent 50%),
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            opacity:0.5; z-index:0;
+        }
+        .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(6,11,20,0.15), var(--deep)); z-index:0; }
+        .hero-grid { position:relative; z-index:2; display:grid; grid-template-columns:1.2fr 0.8fr; gap:2rem; align-items:center; }
+        .hero-copy { animation:fadeUp 1s ease; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
+        .hero-logo-block {
+            display:flex; flex-direction:column; align-items:flex-start; gap:0.4rem;
+            margin-bottom:1.8rem;
+        }
+        .hero-logo-block img {
+            width:100px; height:100px; border-radius:28px; background:#fff;
+            border:2px solid var(--gold); box-shadow:0 15px 35px rgba(201,160,80,0.35);
+        }
+        .hero-logo-block .logo-text { display:flex; flex-direction: column; }
+        .hero-logo-block .logo-text strong {
+            font-family:'Playfair Display',serif; font-size:2.8rem; line-height:1.1; color:#fff;
+        }
+        .hero-logo-block .logo-text span {
+            font-size:1rem; color:var(--muted); margin-top:0.2rem;
+        }
+        .hero-badge {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(255,255,255,0.05); backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,0.1); padding:0.4rem 1.2rem;
+            border-radius:100px; font-size:0.75rem; font-weight:700; margin-bottom:1.5rem;
+            color:var(--gold-light); width:fit-content;
+        }
+        .hero-badge .dot { width:8px; height:8px; border-radius:50%; background:#4ade80; box-shadow:0 0 10px #4ade80; }
+        .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem, 7vw, 4.5rem); line-height:1.1; margin-bottom:1rem; font-weight:800; }
+        .hero h1 .gold { background:linear-gradient(to right, #E0BC6B, #F7E05E); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .hero p { font-size:1rem; max-width:500px; color:rgba(226,232,240,0.9); margin-bottom:1.5rem; }
+        .hero-actions { display:flex; flex-wrap:wrap; gap:0.8rem; margin-bottom:2rem; }
+        .btn {
+            display:inline-flex; align-items:center; gap:0.6rem;
+            padding:0.8rem 1.6rem; border-radius:100px; font-weight:700;
+            transition:all var(--transition); cursor:pointer; border:none;
+            font-size:0.9rem;
+        }
+        .btn-primary { background:linear-gradient(135deg, var(--gold), var(--gold-light)); color:#0A0F1E; box-shadow:0 15px 30px -8px rgba(201,160,80,0.5); }
+        .btn-ghost { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); color:#fff; backdrop-filter:blur(10px); }
+        .hero-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; max-width:460px; }
+        .stat { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:1.2rem; padding:1rem 0.6rem; backdrop-filter:blur(8px); text-align:center; transition:all var(--transition); }
+        .stat:hover { background:rgba(255,255,255,0.07); transform:translateY(-3px); }
+        .stat strong { font-size:1.4rem; font-family:'Playfair Display',serif; color:var(--gold-light); display:block; }
+        .stat span { font-size:0.7rem; color:var(--muted); }
+        .hero-panel { background:rgba(15,23,42,0.4); backdrop-filter:blur(25px); border:1px solid rgba(255,255,255,0.1); border-radius:2.5rem; padding:1.5rem; box-shadow:0 20px 40px -15px rgba(0,0,0,0.6); }
+        .hero-panel .media { border-radius:2rem; overflow:hidden; aspect-ratio:16/10; margin-bottom:1rem; }
+        .hero-panel .media img { width:100%; height:100%; object-fit:cover; transition:transform 1s ease; }
+        .trust-row { display:flex; gap:0.5rem; justify-content:center; }
+        .trust-chip { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:0.4rem 1rem; border-radius:100px; font-size:0.75rem; display:flex; align-items:center; gap:0.4rem; backdrop-filter:blur(10px); }
+
+        /* SECTIONS */
+        .section { padding:5rem 0; }
+        .section-light { background:rgba(255,255,255,0.02); }
+        .section-head { text-align:center; max-width:600px; margin:0 auto 3rem; }
+        .eyebrow {
+            display:inline-flex; align-items:center; gap:0.5rem;
+            background:var(--gold-soft); border:1px solid rgba(201,160,80,0.25);
+            padding:0.3rem 1.2rem; border-radius:100px; font-size:0.7rem; font-weight:800;
+            letter-spacing:0.05em; text-transform:uppercase; color:var(--gold-light); margin-bottom:1rem;
+        }
+        .section-head h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem, 5vw, 2.8rem); font-weight:800; line-height:1.2; margin-bottom:0.5rem; }
+        .section-head h2 .gold { color:var(--gold-light); }
+        .section-head p { color:var(--muted); font-size:0.95rem; }
+
+        /* WHY US */
+        .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+        .feature-card { background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:1.8rem; padding:1.5rem; backdrop-filter:blur(10px); transition:all var(--transition); position:relative; overflow:hidden; }
+        .feature-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(to right, var(--gold), var(--gold-light)); transform:scaleX(0); transition:transform var(--transition); }
+        .feature-card:hover { transform:translateY(-8px); background:rgba(255,255,255,0.05); }
+        .feature-card:hover::before { transform:scaleX(1); }
+        .feature-icon { width:44px; height:44px; border-radius:16px; background:linear-gradient(135deg, #1E293B, #0F172A); display:grid; place-items:center; font-size:1.2rem; color:var(--gold-light); margin-bottom:1rem; }
+        .feature-card h3 { font-size:1rem; margin-bottom:0.5rem; font-weight:800; }
+        .feature-card p { color:var(--muted); font-size:0.8rem; line-height:1.6; }
+
+        /* CHALETS */
+        .filters { display:flex; justify-content:center; gap:0.6rem; margin-bottom:2rem; }
+        .filter-btn { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); padding:0.6rem 1.2rem; border-radius:100px; font-weight:700; cursor:pointer; transition:all var(--transition); color:#CBD5E1; font-size:0.85rem; }
+        .filter-btn.active-marassi { background:#C9A050; color:#000; border-color:#C9A050; }
+        .filter-btn.active-hacienda { background:#2DD4BF; color:#000; border-color:#2DD4BF; }
+        .chalet-scroll { display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; padding-bottom:0.5rem; }
+        .chalet-scroll::-webkit-scrollbar { display:none; }
+        .chalet-card { min-width:260px; max-width:300px; flex:0 0 auto; scroll-snap-align:start; background:rgba(15,23,42,0.5); border:1px solid rgba(255,255,255,0.06); border-radius:1.8rem; overflow:hidden; transition:all var(--transition); backdrop-filter:blur(10px); }
+        .chalet-card:hover { transform:translateY(-10px); border-color:rgba(201,160,80,0.3); }
+        .chalet-media { position:relative; aspect-ratio:4/3; overflow:hidden; }
+        .chalet-media img { width:100%; height:100%; object-fit:cover; transition:transform 0.8s; }
+        .chalet-card:hover .chalet-media img { transform:scale(1.08); }
+        .sector-badge { position:absolute; top:0.8rem; right:0.8rem; background:rgba(6,11,20,0.7); backdrop-filter:blur(10px); padding:0.3rem 0.8rem; border-radius:100px; font-size:0.65rem; font-weight:800; border:1px solid rgba(255,255,255,0.1); }
+        .chalet-body { padding:1rem 1rem 1.4rem; }
+        .chalet-body h3 { font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.2rem; }
+        .location { color:var(--muted); font-size:0.75rem; margin-bottom:0.6rem; }
+        .chips { display:flex; gap:0.4rem; margin-bottom:0.8rem; }
+        .chip { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:0.2rem 0.7rem; border-radius:100px; font-size:0.7rem; }
+        .card-footer { display:flex; justify-content:space-between; align-items:center; }
+        .mini-action { color:var(--gold-light); font-weight:700; font-size:0.8rem; }
+        .btn-book { background:linear-gradient(135deg, var(--gold), var(--gold-light)); color:#0A0F1E; padding:0.5rem 1.2rem; border-radius:100px; font-weight:800; font-size:0.75rem; cursor:pointer; }
+        .chalet-note { background:rgba(15,23,42,0.6); backdrop-filter:blur(16px); border:1px solid rgba(201,160,80,0.2); border-radius:1.5rem; padding:1rem; margin-top:1.5rem; text-align:center; color:var(--muted); font-size:0.85rem; }
+        .progress-wrapper { display:flex; justify-content:center; margin-top:1rem; }
+        .progress-bar { display:flex; gap:5px; direction:ltr; padding:3px 10px; background:rgba(255,255,255,0.02); border-radius:20px; }
+        .progress-segment { width:20px; height:5px; border-radius:3px; background:rgba(255,255,255,0.12); cursor:pointer; transition:all 0.35s; }
+        .progress-segment.active { background:var(--gold-light); width:30px; }
+
+        /* STEPS */
+        .steps-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:700px; margin:0 auto; }
+        .step-card { background:rgba(15,23,42,0.4); border:1px solid rgba(255,255,255,0.06); border-radius:1.8rem; padding:2rem 1.5rem; backdrop-filter:blur(10px); text-align:center; }
+        .step-num { width:48px; height:48px; border-radius:18px; background:linear-gradient(135deg, var(--gold), var(--gold-light)); display:grid; place-items:center; font-size:1.5rem; font-weight:900; color:#0A0F1E; margin:0 auto 1rem; }
+        .step-card h3 { font-family:'Playfair Display',serif; margin-bottom:0.5rem; }
+        .step-card p { color:var(--muted); font-size:0.85rem; }
+
+        /* CONTACT */
+        .contact-cta { background:linear-gradient(135deg, #0A1128, #0d1f3c); border-radius:2rem; padding:2.5rem 2rem; text-align:center; box-shadow:0 20px 40px -10px rgba(0,0,0,0.5); position:relative; overflow:hidden; max-width:650px; margin:0 auto; }
+        .contact-cta::before { content:''; position:absolute; top:-40%; right:-20%; width:250px; height:250px; background:rgba(201,160,80,0.08); border-radius:50%; pointer-events:none; }
+        .contact-cta h2 { font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:0.8rem; color:#fff; position:relative; z-index:1; }
+        .contact-cta p { color:#b8c8d8; font-size:0.95rem; margin-bottom:1.5rem; position:relative; z-index:1; }
+        .phone-cards { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; position:relative; z-index:1; }
+        .phone-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:1.5rem; padding:1rem 1.5rem; backdrop-filter:blur(10px); display:flex; align-items:center; gap:0.8rem; min-width:200px; }
+        .phone-number { font-family:'Playfair Display',serif; font-size:1.4rem; direction:ltr; color:var(--gold-light); }
+        .phone-actions { display:flex; gap:0.6rem; }
+        .call-icon-link, .wa-icon-link { width:38px; height:38px; border-radius:14px; display:grid; place-items:center; color:#fff; }
+        .call-icon-link { background:#0EA5E9; }
+        .wa-icon-link { background:#25D366; }
+
+        /* SOCIAL TICKET – معكوس: الإنجليزية (LTR) تظهر على اليمين، العربية (RTL) تظهر على اليسار */
+        .social-ticket {
+            position: fixed;
+            top: 30%;
+            transform: translateY(-30%);
+            z-index: 998;
+            background: rgba(15,23,42,0.9);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(201,160,80,0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 12px 6px;
+            transition: all 0.4s ease;
+        }
+        html[dir="ltr"] .social-ticket {
+            left: auto;
+            right: 0;
+            border-radius: 18px 0 0 18px;
+            border-right: none;
+            border-left: 2px dashed rgba(201,160,80,0.6);
+        }
+        html[dir="rtl"] .social-ticket {
+            left: 0;
+            right: auto;
+            border-radius: 0 18px 18px 0;
+            border-left: none;
+            border-right: 2px dashed rgba(201,160,80,0.6);
+        }
+        .social-float-icon {
+            width: 40px; height: 40px; border-radius: 14px;
+            background: rgba(255,255,255,0.04); color: var(--gold-light);
+            font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+            transition: all var(--transition); border: 1px solid rgba(201,160,80,0.2);
+        }
+        .social-float-icon:hover { background: var(--gold); color: #0A0F1E; }
+        html[dir="ltr"] .social-float-icon:hover { transform: translateX(-3px); }
+        html[dir="rtl"] .social-float-icon:hover { transform: translateX(3px); }
+
+        footer { padding:2rem 0; border-top:1px solid rgba(255,255,255,0.06); text-align:center; color:var(--muted); font-size:0.9rem; }
+
+        @media (max-width:1024px) {
+            .hero-grid { grid-template-columns:1fr; gap:2rem; }
+            .hero-panel { max-width:450px; margin:0 auto; }
+            .why-grid { grid-template-columns:repeat(2,1fr); }
+            .steps-grid { grid-template-columns:1fr; max-width:400px; }
+        }
+        @media (max-width:768px) {
+            .hero { min-height:auto; padding:5rem 0 2rem; }
+            .hero-logo-block img { width:80px; height:80px; }
+            .hero-logo-block .logo-text strong { font-size:2.2rem; }
+            .hero h1 { font-size:2.2rem; }
+            .hero-stats { grid-template-columns:repeat(2,1fr); }
+            .why-grid { grid-template-columns:1fr; }
+            .chalet-card { min-width:240px; }
+            .phone-cards { flex-direction:column; align-items:center; }
+            .social-ticket { top:20%; padding:8px 4px; gap:8px; }
+            .social-float-icon { width:34px; height:34px; font-size:1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+        <a class="brand" href="https://royal-stay.github.io/main/index.html">
+            <img src="https://i.ibb.co/dsttQM65/logo.png" alt="Royal Stay Logo">
+            <div class="name">
+                <strong>Royal Stay</strong>
+                <span data-i18n="brand_tagline">شاليهات فاخرة • مراسي</span>
+            </div>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" data-i18n="nav_home">الرئيسية</a>
+            <a href="#why-us" data-i18n="nav_why">لماذا نحن</a>
+            <a href="#chalets" data-i18n="nav_chalets">الشاليهات</a>
+            <a href="#booking" data-i18n="nav_booking">طريقة الحجز</a>
+            <a href="#contact" class="nav-cta" data-i18n="nav_contact">تواصل معنا</a>
+        </div>
+        <div class="nav-actions">
+            <button id="langToggle" class="lang-btn"><i class="fas fa-globe"></i> <span>English</span></button>
+            <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero" id="home">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <div class="hero-logo-block">
+                <img src="https://i.ibb.co/dsttQM65/logo.png" alt="Royal Stay Logo">
+                <div class="logo-text">
+                    <strong>Royal Stay</strong>
+                    <span data-i18n="hero_tagline">شاليهات فاخرة • مراسي</span>
+                </div>
+            </div>
+            <div class="hero-badge"><span class="dot"></span> <span data-i18n="hero_badge">شاليهات فاخرة في مراسي وهاسيندا باي</span></div>
+            <h1 data-i18n="hero_title">فخامة <span class="gold">لا تُضاهى</span><br>في قلب الساحل</h1>
+            <p data-i18n="hero_desc">إقامة راقية بتفاصيل مدروسة، إطلالات ساحرة، وحجز سلس يليق بعملائنا المميزين.</p>
+            <div class="hero-actions">
+                <a href="#chalets" class="btn btn-primary" data-i18n="hero_btn_primary"><i class="fas fa-building"></i> استعرض الشاليهات</a>
+                <a href="#contact" class="btn btn-ghost" data-i18n="hero_btn_ghost"><i class="fas fa-headset"></i> تواصل معنا</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><strong>14+</strong><span data-i18n="stat1_label">وحدة مختارة</span></div>
+                <div class="stat"><strong>5★</strong><span data-i18n="stat2_label">جودة الخدمة</span></div>
+                <div class="stat"><strong>24/7</strong><span data-i18n="stat3_label">دعم فوري</span></div>
+                <div class="stat"><strong>100+</strong><span data-i18n="stat4_label">عميل سعيد</span></div>
+            </div>
+        </div>
+        <div class="hero-panel">
+            <div class="media"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format&fit=crop" alt="Luxury Chalet"></div>
+            <div class="trust-row">
+                <span class="trust-chip"><i class="fas fa-shield-alt"></i> <span data-i18n="trust1">حجز مضمون</span></span>
+                <span class="trust-chip"><i class="fas fa-star"></i> <span data-i18n="trust2">تجربة 5 نجوم</span></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="section section-light" id="why-us">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><i class="fas fa-gem"></i> <span data-i18n="why_eyebrow">لماذا Royal Stay</span></span>
+            <h2 data-i18n="why_title">اختيارك <span class="gold">الأذكى</span> للإقامة الفاخرة</h2>
+            <p data-i18n="why_desc">صممنا التجربة لتكون سلسة، أنيقة، وتبني الثقة من اللحظة الأولى.</p>
+        </div>
+        <div class="why-grid" id="whyGrid"></div>
+    </div>
+</section>
+
+<section class="section" id="chalets">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><i class="fas fa-home"></i> <span data-i18n="chalets_eyebrow">مجموعتنا</span></span>
+            <h2 data-i18n="chalets_title">اختر <span class="gold">شاليهك</span> المثالي</h2>
+        </div>
+        <div class="filters" data-aos="fade-up">
+            <button class="filter-btn active-marassi" onclick="scrollToSector('marassi', this)" data-i18n="filter_marassi"><i class="fas fa-umbrella-beach"></i> مراسي</button>
+            <button class="filter-btn" onclick="scrollToSector('hacienda', this)" data-i18n="filter_hacienda"><i class="fas fa-tree"></i> هاسيندا باي</button>
+        </div>
+        <div class="chalet-scroll" id="allChaletsScroll"></div>
+        <div class="progress-wrapper"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="chalet-note" data-i18n="chalet_note">
+            <i class="fas fa-info-circle"></i> دي عيّنة من الشاليهات المميزة. لو ما لقيتش اللي يناسبك، تواصل معانا وهنوفرلك الأفضل.
+        </div>
+    </div>
+</section>
+
+<section class="section section-light" id="booking">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><i class="fas fa-route"></i> <span data-i18n="booking_eyebrow">خطوات الحجز</span></span>
+            <h2 data-i18n="booking_title">كيف <span class="gold">تحجز</span> شاليهك؟</h2>
+            <p data-i18n="booking_desc">خطوتين بس عشان تثبت إقامتك الفاخرة.</p>
+        </div>
+        <div class="steps-grid">
+            <article class="step-card" data-aos="fade-up"><div class="step-num">1</div><h3 data-i18n="step1_title">تصفح الشاليهات</h3><p data-i18n="step1_desc">شوف العيّنة ولو حابب حاجة معينة مش موجودة، احنا هنلبي طلبك.</p></article>
+            <article class="step-card" data-aos="fade-up"><div class="step-num">2</div><h3 data-i18n="step2_title">تواصل واحجز فورًا</h3><p data-i18n="step2_desc">اتصل أو واتساب وهنأكد الحجز في نفس المكالمة.</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-head" data-aos="fade-up">
+            <span class="eyebrow"><i class="fas fa-phone-alt"></i> <span data-i18n="contact_eyebrow">تواصل معنا</span></span>
+            <h2 data-i18n="contact_title">احجز <span class="gold">دلوقتي</span> أو استفسر</h2>
+        </div>
+        <div class="contact-cta" data-aos="fade-up">
+            <h2 data-i18n="contact_cta_title">✨ مستعد تعيش تجربة الفخامة في مراسي؟</h2>
+            <p data-i18n="contact_cta_desc">احجز شاليهك الآن واستمتع بإقامة أحلامك.</p>
+            <div class="phone-cards">
+                <div class="phone-card">
+                    <span class="phone-number">01044446549</span>
+                    <div class="phone-actions">
+                        <a href="tel:01044446549" class="call-icon-link"><i class="fas fa-phone"></i></a>
+                        <a href="https://wa.me/201044446549" target="_blank" class="wa-icon-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="phone-card">
+                    <span class="phone-number">01028056604</span>
+                    <div class="phone-actions">
+                        <a href="tel:01028056604" class="call-icon-link"><i class="fas fa-phone"></i></a>
+                        <a href="https://wa.me/201028056604" target="_blank" class="wa-icon-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="social-ticket">
+    <a href="https://www.instagram.com/royal_stay9" target="_blank" class="social-float-icon"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@royalstay9" target="_blank" class="social-float-icon"><i class="fab fa-tiktok"></i></a>
+    <a href="https://www.facebook.com/profile.php?id=61589158047313" target="_blank" class="social-float-icon"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.snapchat.com/add/royalstay9" target="_blank" class="social-float-icon"><i class="fab fa-snapchat-ghost"></i></a>
+</div>
+
+<footer>
+    <div class="container">
+        <p data-i18n="footer_text">© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - جميع الحقوق محفوظة</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    (function() {
+        const translations = {
+            ar: {
+                page_title: "Royal Stay - شاليهات فاخرة في مراسي وهاسيندا باي",
+                meta_desc: "Royal Stay توفر شاليهات فاخرة للإيجار في مراسي وهاسيندا باي. تجربة إقامة راقية مع حجز سريع وخدمة احترافية.",
+                brand_tagline: "شاليهات فاخرة • مراسي",
+                nav_home: "الرئيسية",
+                nav_why: "لماذا نحن",
+                nav_chalets: "الشاليهات",
+                nav_booking: "طريقة الحجز",
+                nav_contact: "تواصل معنا",
+                hero_tagline: "شاليهات فاخرة • مراسي",
+                hero_badge: "شاليهات فاخرة في مراسي وهاسيندا باي",
+                hero_title: 'فخامة <span class="gold">لا تُضاهى</span><br>في قلب الساحل',
+                hero_desc: "إقامة راقية بتفاصيل مدروسة، إطلالات ساحرة، وحجز سلس يليق بعملائنا المميزين.",
+                hero_btn_primary: '<i class="fas fa-building"></i> استعرض الشاليهات',
+                hero_btn_ghost: '<i class="fas fa-headset"></i> تواصل معنا',
+                stat1_label: "وحدة مختارة",
+                stat2_label: "جودة الخدمة",
+                stat3_label: "دعم فوري",
+                stat4_label: "عميل سعيد",
+                trust1: "حجز مضمون",
+                trust2: "تجربة 5 نجوم",
+                why_eyebrow: "لماذا Royal Stay",
+                why_title: 'اختيارك <span class="gold">الأذكى</span> للإقامة الفاخرة',
+                why_desc: "صممنا التجربة لتكون سلسة، أنيقة، وتبني الثقة من اللحظة الأولى.",
+                chalets_eyebrow: "مجموعتنا",
+                chalets_title: 'اختر <span class="gold">شاليهك</span> المثالي',
+                filter_marassi: '<i class="fas fa-umbrella-beach"></i> مراسي',
+                filter_hacienda: '<i class="fas fa-tree"></i> هاسيندا باي',
+                chalet_note: '<i class="fas fa-info-circle"></i> دي عيّنة من الشاليهات المميزة. لو ما لقيتش اللي يناسبك، تواصل معانا وهنوفرلك الأفضل.',
+                booking_eyebrow: "خطوات الحجز",
+                booking_title: 'كيف <span class="gold">تحجز</span> شاليهك؟',
+                booking_desc: "خطوتين بس عشان تثبت إقامتك الفاخرة.",
+                step1_title: "تصفح الشاليهات",
+                step1_desc: "شوف العيّنة ولو حابب حاجة معينة مش موجودة، احنا هنلبي طلبك.",
+                step2_title: "تواصل واحجز فورًا",
+                step2_desc: "اتصل أو واتساب وهنأكد الحجز في نفس المكالمة.",
+                contact_eyebrow: "تواصل معنا",
+                contact_title: 'احجز <span class="gold">دلوقتي</span> أو استفسر',
+                contact_cta_title: "✨ مستعد تعيش تجربة الفخامة في مراسي؟",
+                contact_cta_desc: "احجز شاليهك الآن واستمتع بإقامة أحلامك.",
+                footer_text: '© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - جميع الحقوق محفوظة',
+                lang_toggle: "English",
+                chalet_details: "التفاصيل",
+                chalet_book: "احجز",
+                sector_marassi: "مراسي",
+                sector_hacienda: "هاسيندا باي"
+            },
+            en: {
+                page_title: "Royal Stay - Luxury Chalets in Marassi & Hacienda Bay",
+                meta_desc: "Royal Stay offers premium chalets for rent in Marassi and Hacienda Bay. Enjoy a refined stay with fast booking and professional service.",
+                brand_tagline: "Luxury Chalets • Marassi",
+                nav_home: "Home",
+                nav_why: "Why Us",
+                nav_chalets: "Chalets",
+                nav_booking: "Booking",
+                nav_contact: "Contact",
+                hero_tagline: "Luxury Chalets • Marassi",
+                hero_badge: "Luxury Chalets in Marassi & Hacienda Bay",
+                hero_title: 'Unmatched <span class="gold">Luxury</span><br>In the Heart of the Coast',
+                hero_desc: "An elegant stay with meticulous details, breathtaking views, and seamless booking for our distinguished guests.",
+                hero_btn_primary: '<i class="fas fa-building"></i> Explore Chalets',
+                hero_btn_ghost: '<i class="fas fa-headset"></i> Contact Us',
+                stat1_label: "Selected Units",
+                stat2_label: "Service Quality",
+                stat3_label: "Instant Support",
+                stat4_label: "Happy Clients",
+                trust1: "Guaranteed Booking",
+                trust2: "5-Star Experience",
+                why_eyebrow: "Why Royal Stay",
+                why_title: 'Your <span class="gold">Smartest</span> Choice for Luxury Stays',
+                why_desc: "We designed the experience to be seamless, elegant, and build trust from the very first moment.",
+                chalets_eyebrow: "Our Collection",
+                chalets_title: 'Choose Your <span class="gold">Ideal</span> Chalet',
+                filter_marassi: '<i class="fas fa-umbrella-beach"></i> Marassi',
+                filter_hacienda: '<i class="fas fa-tree"></i> Hacienda Bay',
+                chalet_note: '<i class="fas fa-info-circle"></i> These are a sample of our premium chalets. If you don’t find what suits you, contact us and we’ll provide you with even better options.',
+                booking_eyebrow: "Booking Steps",
+                booking_title: 'How to <span class="gold">Book</span> Your Chalet?',
+                booking_desc: "Only two steps to secure your luxury stay.",
+                step1_title: "Browse Chalets",
+                step1_desc: "Check out the sample, and if you want something specific not listed, we’ll fulfill your request.",
+                step2_title: "Contact & Book Instantly",
+                step2_desc: "Call or WhatsApp and we’ll confirm your booking instantly.",
+                contact_eyebrow: "Contact Us",
+                contact_title: 'Book <span class="gold">Now</span> or Inquire',
+                contact_cta_title: "✨ Ready to Experience Luxury in Marassi?",
+                contact_cta_desc: "Book your chalet now and enjoy your dream stay.",
+                footer_text: '© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - All Rights Reserved',
+                lang_toggle: "عربي",
+                chalet_details: "Details",
+                chalet_book: "Book",
+                sector_marassi: "Marassi",
+                sector_hacienda: "Hacienda Bay"
+            }
+        };
+
+        const featuresData = [
+            { icon: "fa-crown", key: "feat1" },
+            { icon: "fa-concierge-bell", key: "feat2" },
+            { icon: "fa-tags", key: "feat3" },
+            { icon: "fa-headset", key: "feat4" },
+            { icon: "fa-glass-cheers", key: "feat5" },
+            { icon: "fa-car", key: "feat6" },
+            { icon: "fa-golf-ball-tee", key: "feat7" }
+        ];
+
+        const featureTexts = {
+            ar: {
+                feat1: { title: "فخامة حقيقية", desc: "إقامة راقية بتفاصيل مدروسة، إطلالات ساحرة، وحجز سلس يليق بعملائنا المميزين." },
+                feat2: { title: "تيم هاوس كيبينج 24/7", desc: "فريق متخصص للعناية بنظافة وراحة الشاليه." },
+                feat3: { title: "خصومات الحجوزات الطويلة", desc: "خصومات حصرية على الإقامات الممتدة والسيزون الكامل." },
+                feat4: { title: "تيم مساعدة ومتابعة 24/7", desc: "فريق دعم متواجد دائمًا للرد على استفساراتك." },
+                feat5: { title: "تنظيم الرحلات كاملة", desc: "نرتب السهرات والأنشطة والخروجات، مش مجرد حجز." },
+                feat6: { title: "توفير عربية بسواق", desc: "سيارة خاصة مع سائق محترف لتنقلاتك." },
+                feat7: { title: "جولف كارز للحجز", desc: "عربات جولف للتنقل داخل المنتجع براحة." }
+            },
+            en: {
+                feat1: { title: "True Luxury", desc: "An elegant stay with meticulous details, breathtaking views, and seamless booking." },
+                feat2: { title: "24/7 Housekeeping", desc: "Dedicated team for chalet cleanliness and comfort." },
+                feat3: { title: "Long Stay Discounts", desc: "Exclusive discounts for extended stays and full season bookings." },
+                feat4: { title: "24/7 Support Team", desc: "Support team always available to answer your inquiries." },
+                feat5: { title: "Full Trip Organization", desc: "We arrange evenings, activities, and outings, not just booking." },
+                feat6: { title: "Private Car with Driver", desc: "Private car with professional driver for your transportation." },
+                feat7: { title: "Golf Carts for Rent", desc: "Golf carts for comfortable transportation within the resort." }
+            }
+        };
+
+        // بيانات الشاليهات الحقيقية
+        const chaletsData = [
+            {
+                id: 1,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/nq7CLhfp/photo-3-2026-05-04-01-54-14.jpg',
+                ar: { name: 'استوديو مارينا مراسي', location: 'مراسي - تراس واسع', beds: '2 سرير + أريكة سرير', baths: '1 حمام', highlight: 'تراس مفروش' },
+                en: { name: 'Marina Marassi Studio', location: 'Marassi - Spacious Terrace', beds: '2 Beds + Sofa Bed', baths: '1 Bath', highlight: 'Furnished Terrace' }
+            },
+            {
+                id: 2,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/0ymkXcdx/photo-15-2026-05-05-14-44-25.jpg',
+                ar: { name: 'استوديو فايا مراسي', location: 'فيو بول وبحر', beds: 'سرير كبير + أريكة سرير', baths: '1 حمام', highlight: 'إطلالة بحر' },
+                en: { name: 'Vaya Marassi Studio', location: 'Pool & Sea View', beds: 'King Bed + Sofa Bed', baths: '1 Bath', highlight: 'Sea View' }
+            },
+            {
+                id: 3,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/LDR1JnXF/photo-11-2026-05-05-14-59-06.jpg',
+                ar: { name: 'غرفتين مارينا مراسي', location: 'خطوات من البول والممشى', beds: 'سرير كبير + 2 سرير صغير', baths: '2 حمام', highlight: 'إطلالة بول' },
+                en: { name: 'Two-Bedroom Marina Marassi', location: 'Steps to Pool & Marina Walk', beds: 'King Bed + 2 Twin Beds', baths: '2 Baths', highlight: 'Pool View' }
+            },
+            {
+                id: 4,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/QjPRbf4h/photo-2-2026-05-05-15-05-58.jpg',
+                ar: { name: 'استوديو مارينا مراسي', location: 'فيو بول دايركت', beds: 'سرير كبير + أريكة سرير', baths: '1 حمام', highlight: 'إطلالة دايركت على البول' },
+                en: { name: 'Marina Marassi Studio', location: 'Direct Pool View', beds: 'King Bed + Sofa Bed', baths: '1 Bath', highlight: 'Direct Pool View' }
+            },
+            {
+                id: 5,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/RkVVDz8W/photo-12-2026-05-05-15-13-40.jpg',
+                ar: { name: 'غرفتين مراسي ليا', location: 'فيو بول دايركت وقرب أكوا بارك', beds: 'سرير كبير + 2 سرير صغير', baths: '2 حمام', highlight: 'قرب أكوا بارك' },
+                en: { name: 'Two-Bedroom Marassi Liya', location: 'Direct Pool View, Near Aqua Park', beds: 'King Bed + 2 Twin Beds', baths: '2 Baths', highlight: 'Near Aqua Park' }
+            },
+            {
+                id: 6,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/4ZG0gPhx/photo-4-2026-05-05-15-20-31.jpg',
+                ar: { name: 'استوديو أرضي بجاردن', location: 'أرضي بجاردن، خطوات من البول', beds: '2 سرير + 2 أريكة سرير', baths: '1 حمام', highlight: 'جاردن خاصة' },
+                en: { name: 'Ground Floor Studio with Garden', location: 'Ground Floor Garden, Steps to Pool', beds: '2 Beds + 2 Sofa Beds', baths: '1 Bath', highlight: 'Private Garden' }
+            },
+            {
+                id: 7,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/Jw6P5K0S/photo-9-2026-05-05-15-26-21.jpg',
+                ar: { name: 'غرفتين مارينا مراسي', location: 'شايف البول، خطوات من المارينا', beds: 'سرير كبير + 2 سرير صغير', baths: '1 حمام', highlight: 'إطلالة بول' },
+                en: { name: 'Two-Bedroom Marina Marassi', location: 'Pool View, Steps to Marina', beds: 'King Bed + 2 Twin Beds', baths: '1 Bath', highlight: 'Pool View' }
+            },
+            {
+                id: 8,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/BH0xNwqJ/photo-7-2026-05-05-15-32-44.jpg',
+                ar: { name: 'غرفتين مارينا - الصف الأول', location: 'أول صف على القنال', beds: 'سرير كبير + 2 سرير صغير', baths: '2 حمام', highlight: 'على القنال مباشرة' },
+                en: { name: 'Two-Bedroom Marina - First Row', location: 'First Row on Canal', beds: 'King Bed + 2 Twin Beds', baths: '2 Baths', highlight: 'Direct Canal Front' }
+            },
+            {
+                id: 9,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/Y4ND747z/photo-4-2026-05-05-15-39-52.jpg',
+                ar: { name: 'استوديو مارينا - دور تالت', location: 'دور تالت، مارينا', beds: 'سرير كبير', baths: '2 حمام', highlight: 'دور عالي' },
+                en: { name: 'Marina Studio - Third Floor', location: 'Third Floor, Marina', beds: 'King Bed', baths: '2 Baths', highlight: 'High Floor' }
+            },
+            {
+                id: 10,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/39TqTBzc/photo-9-2026-05-05-15-45-02.jpg',
+                ar: { name: 'غرفتين مارينا - قرب البول', location: 'خطوات من البول والممشى', beds: 'سرير كبير + 2 سرير صغير', baths: '2 حمام', highlight: 'قرب الممشى' },
+                en: { name: 'Two-Bedroom Marina - Near Pool', location: 'Steps to Pool & Marina Walk', beds: 'King Bed + 2 Twin Beds', baths: '2 Baths', highlight: 'Near Marina Walk' }
+            },
+            {
+                id: 11,
+                sector: 'hacienda',
+                img: 'https://i.ibb.co/kg5j4TWr/photo-2-2026-05-05-15-49-01.jpg',
+                ar: { name: 'فيلا ستاندالون هاسيندا', location: 'برايفت بول', beds: '5 غرف نوم', baths: 'عدة حمامات', highlight: 'برايفت بول' },
+                en: { name: 'Standalone Villa Hacienda', location: 'Private Pool', beds: '5 Bedrooms', baths: 'Multiple Baths', highlight: 'Private Pool' }
+            },
+            {
+                id: 12,
+                sector: 'hacienda',
+                img: 'https://i.ibb.co/nM8Njj2k/photo-3-2026-05-05-15-56-46.jpg',
+                ar: { name: 'شقة ٣ غرف مارينا مراسي', location: 'فيو لاجون دايركت', beds: '3 سرير كبير', baths: '3 حمامات', highlight: 'إطلالة لاجون' },
+                en: { name: '3-Bedroom Lagoon Villa', location: 'Direct Lagoon View', beds: '3 King Beds', baths: '3 Baths', highlight: 'Lagoon View' }
+            },
+            {
+                id: 13,
+                sector: 'marassi',
+                img: 'https://i.ibb.co/Pz9Y0J9q/photo-2-2026-05-05-16-11-28.jpg',
+                ar: { name: 'استوديو مارينا - فيو المارينا', location: 'فيو المارينا', beds: '2 سرير كبير + أريكة سرير', baths: '1 حمام', highlight: 'إطلالة المارينا' },
+                en: { name: 'Marina Studio - Marina View', location: 'Marina View', beds: '2 King Beds + Sofa Bed', baths: '1 Bath', highlight: 'Marina View' }
+            },
+            {
+                id: 14,
+                sector: 'hacienda',
+                img: 'https://i.ibb.co/tp7h7pk7/photo-8-2026-05-05-16-17-27.jpg',
+                ar: { name: 'تاون هاوس هاسيندا', location: 'جاردن كبيرة', beds: '4 غرف نوم', baths: '3 حمام', highlight: 'جاردن واسعة' },
+                en: { name: 'Townhouse Hacienda Bay', location: 'Large Garden', beds: '4 Bedrooms', baths: '3 Baths', highlight: 'Spacious Garden' }
+            }
+        ];
+
+        let currentLang = 'ar';
+        const htmlEl = document.documentElement;
+        const scrollContainer = document.getElementById('allChaletsScroll');
+        const progressBar = document.getElementById('progressBar');
+
+        function detectLanguage() {
+            const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            return browserLang.startsWith('ar') ? 'ar' : 'en';
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            htmlEl.lang = lang;
+            htmlEl.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.title = translations[lang].page_title;
+            document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_desc);
+
+            const toggleBtn = document.getElementById('langToggle');
+            if (toggleBtn) {
+                toggleBtn.querySelector('span').textContent = translations[lang].lang_toggle;
+            }
+
+            renderWhyFeatures();
+            renderCards();
+            buildProgress();
+            updateProgress();
+
+            localStorage.setItem('royal-stay-lang', lang);
+        }
+
+        function renderWhyFeatures() {
+            const grid = document.getElementById('whyGrid');
+            if (!grid) return;
+            let html = '';
+            const texts = featureTexts[currentLang];
+            featuresData.forEach(f => {
+                const t = texts[f.key];
+                html += `<article class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon"><i class="fas ${f.icon}"></i></div>
+                    <h3>${t.title}</h3>
+                    <p>${t.desc}</p>
+                </article>`;
+            });
+            grid.innerHTML = html;
+        }
+
+        function renderCards() {
+            if (!scrollContainer) return;
+            let html = '';
+            const t = translations[currentLang];
+            const sectors = ['marassi', 'hacienda'];
+            const ordered = sectors.reduce((acc, sector) => acc.concat(chaletsData.filter(c => c.sector === sector)), []);
+            ordered.forEach(c => {
+                const data = c[currentLang];
+                const sectorName = c.sector === 'marassi' ? t.sector_marassi : t.sector_hacienda;
+                html += `
+                <a href="https://royal-stay.github.io/main/unit${c.id}.html" target="_blank" class="chalet-card" data-sector="${c.sector}">
+                    <div class="chalet-media">
+                        <img src="${c.img}" alt="${data.name}" loading="lazy">
+                        <span class="sector-badge">${sectorName}</span>
+                    </div>
+                    <div class="chalet-body">
+                        <h3>${data.name}</h3>
+                        <div class="location"><i class="fas fa-location-dot"></i> ${data.location}</div>
+                        <div class="chips">
+                            <span class="chip"><i class="fas fa-bed"></i> ${data.beds}</span>
+                            <span class="chip"><i class="fas fa-bath"></i> ${data.baths}</span>
+                            <span class="chip"><i class="fas fa-eye"></i> ${data.highlight}</span>
+                        </div>
+                        <div class="card-footer">
+                            <span class="mini-action"><i class="fas fa-arrow-left"></i> ${t.chalet_details}</span>
+                            <span class="btn-book" onclick="event.preventDefault(); event.stopPropagation(); document.getElementById('contact').scrollIntoView({behavior:'smooth'});">${t.chalet_book}</span>
+                        </div>
+                    </div>
+                </a>`;
+            });
+            scrollContainer.innerHTML = html;
+        }
+
+        function buildProgress() {
+            if (!progressBar) return;
+            progressBar.innerHTML = '';
+            const totalCards = chaletsData.length; // 14
+            for (let i = 0; i < totalCards; i++) {
+                const seg = document.createElement('div');
+                seg.className = 'progress-segment';
+                seg.addEventListener('click', () => {
+                    const cards = document.querySelectorAll('.chalet-card');
+                    if (!cards.length) return;
+                    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                    if (maxScroll <= 0) return;
+                    const target = (i / (totalCards - 1)) * maxScroll;
+                    scrollContainer.scrollTo({ left: target, behavior: 'smooth' });
+                });
+                progressBar.appendChild(seg);
+            }
+        }
+
+        function updateProgress() {
+            const cards = document.querySelectorAll('.chalet-card');
+            if (!cards.length) return;
+            const totalCards = cards.length;
+            const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            let activeIndex = 0;
+            if (maxScroll > 0) {
+                const progress = Math.abs(scrollContainer.scrollLeft) / maxScroll;
+                activeIndex = Math.min(totalCards - 1, Math.round(progress * (totalCards - 1)));
+            }
+            document.querySelectorAll('.progress-segment').forEach((seg, idx) => {
+                seg.classList.toggle('active', idx === activeIndex);
+            });
+        }
+
+        window.scrollToSector = function(sector, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-marassi', 'active-hacienda'));
+            btn.classList.add(`active-${sector}`);
+            const firstCard = scrollContainer.querySelector(`.chalet-card[data-sector="${sector}"]`);
+            if (firstCard) {
+                const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+                if (maxScroll <= 0) return;
+                const cardOffset = firstCard.offsetLeft;
+                const containerWidth = scrollContainer.scrollWidth;
+                const target = (cardOffset / containerWidth) * maxScroll;
+                scrollContainer.scrollTo({ left: target, behavior: 'smooth' });
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('royal-stay-lang');
+            const lang = savedLang || detectLanguage();
+            setLanguage(lang);
+
+            document.getElementById('langToggle').addEventListener('click', () => {
+                const newLang = currentLang === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+            AOS.init({ duration: 800, once: true, offset: 50 });
+
+            if (scrollContainer) {
+                scrollContainer.addEventListener('scroll', updateProgress);
+                window.addEventListener('resize', updateProgress);
+                setTimeout(updateProgress, 200);
+            }
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
+            document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = navbar.offsetHeight + 20;
+                        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    })();
+</script>
+</body>
+</html>

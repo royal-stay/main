@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title data-i18n="page_title">شاليه غرفتين مارينا مراسي - Royal Stay | شاليهات فاخرة في الساحل الشمالي</title>
+    <meta name="description" data-i18n="meta_desc" content="شاليه غرفتين فاخر للإيجار في مارينا مراسي - مكيف بالكامل، إطلالة على البول، خطوات من المارينا. مطبخ مجهز وشاشة 65 بوصة. احجز الآن مع Royal Stay.">
+    <meta name="theme-color" content="#0A0F1E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --deep: #060B14;
+            --surface: #0F172A;
+            --text: #F8FAFC;
+            --muted: #94A3B8;
+            --gold: #C9A050;
+            --gold-light: #E0BC6B;
+            --gold-soft: rgba(201, 160, 80, 0.15);
+            --radius: 2rem;
+            --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            --deep-navy: #0A1128;
+            --radius-lg: 2.5rem;
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--deep);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1280px, 92%);
+            margin-inline: auto;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0.7rem 0;
+            transition: all var(--transition);
+            background: rgba(6, 11, 20, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .brand {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            text-align: start;
+            min-width: max-content;
+        }
+        .brand img {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            background: #fff;
+            border: 2px solid var(--gold);
+            box-shadow: 0 8px 20px rgba(201, 160, 80, 0.2);
+            flex-shrink: 0;
+        }
+        .brand .name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .brand .name strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .brand .name span {
+            font-size: 0.6rem;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            padding: 0.5rem 0.9rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all var(--transition);
+            color: #E2E8F0;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .nav-cta {
+            background: linear-gradient(135deg, #B28A30, #D4A843);
+            color: #fff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px -5px rgba(201, 160, 80, 0.6);
+            font-weight: 800;
+        }
+        .nav-cta:hover {
+            background: linear-gradient(135deg, #D4A843, #E0BC6B);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .lang-btn {
+            padding: 0.5rem 0.9rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            background: rgba(201, 160, 80, 0.08);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .lang-btn:hover {
+            background: var(--gold);
+            color: #0A0F1E;
+            border-color: var(--gold);
+        }
+        .menu-btn {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO UNIT ===== */
+        .unit-hero {
+            padding: 8rem 0 3rem;
+        }
+        .unit-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .unit-hero-image {
+            border-radius: 2.5rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+        .unit-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+        .unit-hero-image:hover img {
+            transform: scale(1.03);
+        }
+        .unit-hero-content {
+            padding: 1rem 0;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold-light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition);
+        }
+        .back-link:hover {
+            gap: 0.8rem;
+            color: #fff;
+        }
+        .unit-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        .unit-hero-content h1 .gold {
+            background: linear-gradient(to right, #E0BC6B, #F7E05E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .unit-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+        .unit-location i {
+            color: var(--gold);
+        }
+        .highlight-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1.8rem;
+        }
+        .highlight-chip {
+            background: var(--gold-soft);
+            border: 1px solid rgba(201, 160, 80, 0.25);
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 700;
+            transition: all var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #0A0F1E;
+            box-shadow: 0 20px 40px -10px rgba(201, 160, 80, 0.5);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-section {
+            padding: 4rem 0;
+        }
+        .section-head {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gold-soft);
+            border: 1px solid rgba(201, 160, 80, 0.25);
+            padding: 0.4rem 1.4rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 1.2rem;
+        }
+        .section-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+        .section-head h2 .gold {
+            color: var(--gold-light);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        .gallery-item {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            cursor: pointer;
+            transition: all var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        .gallery-item:hover {
+            border-color: rgba(201, 160, 80, 0.3);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 11, 20, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 1.5rem;
+            object-fit: contain;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: all var(--transition);
+            z-index: 2001;
+        }
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        .lightbox-prev,
+        .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            transition: all var(--transition);
+            z-index: 2001;
+        }
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .lightbox-prev {
+            left: 2rem;
+        }
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        /* ===== DETAILS ===== */
+        .details-section {
+            padding: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .detail-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 2rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all var(--transition);
+        }
+        .detail-card:hover {
+            border-color: rgba(201, 160, 80, 0.15);
+            transform: translateY(-4px);
+        }
+        .detail-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .detail-card h3 i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+        .amenity-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #CBD5E1;
+            font-size: 0.95rem;
+        }
+        .amenity-item i {
+            color: var(--gold);
+            font-size: 0.8rem;
+            width: 20px;
+            text-align: center;
+        }
+        .spec-highlight {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--gold-soft);
+            border-radius: 1rem;
+            padding: 1rem 1.4rem;
+            margin-top: 1.2rem;
+            border: 1px solid rgba(201, 160, 80, 0.15);
+        }
+        .spec-highlight i {
+            font-size: 1.5rem;
+            color: var(--gold-light);
+        }
+        .spec-highlight span {
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        /* ===== BOOKING CTA ===== */
+        .booking-section {
+            padding: 5rem 0;
+        }
+        .cta-banner {
+            background: linear-gradient(135deg, var(--deep-navy), #0d1f3c);
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            text-align: center;
+            color: #fff;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(201, 160, 80, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .cta-banner h2 {
+            font-family: 'Playfair Display', 'Cairo', serif;
+            font-size: clamp(28px, 4vw, 40px);
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+        .phone-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .phone-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            min-width: 280px;
+        }
+        .phone-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            direction: ltr;
+            color: var(--gold-light);
+            white-space: nowrap;
+        }
+        .phone-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        .phone-actions a {
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            transition: all var(--transition);
+        }
+        .call-icon-link {
+            background: #0EA5E9;
+            color: #fff;
+        }
+        .call-icon-link:hover {
+            background: #38BDF8;
+            transform: scale(1.1);
+        }
+        .wa-icon-link {
+            background: #25D366;
+            color: #fff;
+        }
+        .wa-icon-link:hover {
+            background: #4ADE80;
+            transform: scale(1.1);
+        }
+
+        /* ===== SOCIAL ROW (in banner) ===== */
+        .social-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 280px;
+            justify-content: center;
+        }
+        .social-card a {
+            width: 48px;
+            height: 48px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            border: 1px solid rgba(201, 160, 80, 0.25);
+        }
+        .social-card a:hover {
+            background: var(--gold);
+            color: #0A0F1E;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            text-align: center;
+            color: var(--muted);
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .footer-brand img {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: #fff;
+        }
+        .footer-brand strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 1024px) {
+            .unit-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .menu-btn {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 1rem;
+                right: 1rem;
+                background: rgba(6, 11, 20, 0.98);
+                backdrop-filter: blur(25px);
+                border-radius: 2rem;
+                padding: 2rem 1.5rem;
+                flex-direction: column;
+                align-items: stretch;
+                display: none;
+                box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 999;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                text-align: center;
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+            .unit-hero {
+                padding: 6rem 0 2rem;
+            }
+            .unit-hero-image {
+                border-radius: 2rem;
+            }
+            .unit-hero-content h1 {
+                font-size: 2.2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .details-grid {
+                gap: 1.5rem;
+            }
+            .detail-card {
+                padding: 1.5rem;
+            }
+            .amenity-list {
+                grid-template-columns: 1fr;
+            }
+            .booking-section {
+                padding: 3rem 0;
+            }
+            .cta-banner {
+                padding: 30px 15px;
+                border-radius: 2rem;
+            }
+            .phone-cards {
+                gap: 1rem;
+            }
+            .phone-card {
+                min-width: 100%;
+                padding: 1rem 1.2rem;
+            }
+            .phone-number {
+                font-size: 1.4rem;
+            }
+            .social-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-card {
+                min-width: 100%;
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a class="brand" href="https://royal-stay.github.io/main/index.html">
+                <img src="https://i.ibb.co/dsttQM65/logo.png" alt="Royal Stay Logo">
+                <div class="name">
+                    <strong>Royal Stay</strong>
+                    <span data-i18n="brand_tagline">شاليهات فاخرة • مراسي</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="https://royal-stay.github.io/main/index.html" data-i18n="nav_home">الرئيسية</a>
+                <a href="https://royal-stay.github.io/main/why-us.html" data-i18n="nav_why">لماذا نحن</a>
+                <a href="https://royal-stay.github.io/main/chalets.html" data-i18n="nav_chalets">الشاليهات</a>
+                <a href="#contact" class="nav-cta" data-i18n="nav_book">احجز هذا الشاليه</a>
+            </div>
+            <div class="nav-actions">
+                <button id="langToggle" class="lang-btn"><i class="fas fa-globe"></i> <span>English</span></button>
+                <button class="menu-btn" id="menuBtn" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="unit-hero">
+            <div class="container">
+                <div class="unit-hero-grid">
+                    <div class="unit-hero-image" data-aos="fade-left">
+                        <img src="https://i.ibb.co/Jw6P5K0S/photo-9-2026-05-05-15-26-21.jpg" alt="Marina Marassi Two-Bedroom Chalet" width="800" height="600" loading="eager">
+                    </div>
+                    <div class="unit-hero-content" data-aos="fade-right">
+                        <a href="https://royal-stay.github.io/main/chalets.html" class="back-link"><i class="fas fa-arrow-right"></i> <span data-i18n="back_to_chalets">العودة إلى الشاليهات</span></a>
+                        <h1 data-i18n="unit_title">شاليه <span class="gold">غرفتين</span> مارينا مراسي</h1>
+                        <div class="unit-location">
+                            <i class="fas fa-location-dot"></i>
+                            <span data-i18n="unit_location">قلب مارينا مراسي - خطوات من المارينا وإطلالة على حمام السباحة</span>
+                        </div>
+                        <div class="highlight-chips" id="highlightChips"></div>
+                        <p style="color:#CBD5E1; font-size:1.05rem; margin-bottom:1.8rem; line-height:1.9;" data-i18n="unit_desc">
+                            شاليه غرفتين فاخر في قلب مارينا مراسي، مكيف بالكامل ومجهز بكل اللي تحتاجه. خطوات من المارينا وحمام السباحة، مع إطلالة مباشرة على البول. مثالي للعائلات والأصدقاء.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> <span data-i18n="btn_book_now">احجز الآن</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <div class="section-head" data-aos="fade-up">
+                    <span class="eyebrow"><i class="fas fa-images"></i> <span data-i18n="gallery_eyebrow">معرض الصور</span></span>
+                    <h2 data-i18n="gallery_title">جولة <span class="gold">بصرية</span> في الشاليه</h2>
+                    <p style="color:var(--muted);" data-i18n="gallery_desc">اضغط على أي صورة لتكبيرها واستعراض المعرض بالكامل.</p>
+                </div>
+                <div class="gallery-grid" id="galleryGrid" data-aos="fade-up" data-aos-delay="100"></div>
+            </div>
+        </section>
+
+        <section class="details-section" id="details">
+            <div class="container">
+                <div class="section-head" data-aos="fade-up">
+                    <span class="eyebrow"><i class="fas fa-clipboard-list"></i> <span data-i18n="details_eyebrow">المواصفات</span></span>
+                    <h2 data-i18n="details_title">تفاصيل <span class="gold">الإقامة</span> الفاخرة</h2>
+                </div>
+                <div class="details-grid" id="detailsGrid"></div>
+            </div>
+        </section>
+
+        <section class="booking-section" id="contact">
+            <div class="container">
+                <div class="section-head" data-aos="fade-up">
+                    <span class="eyebrow"><i class="fas fa-phone-alt"></i> <span data-i18n="contact_eyebrow">تواصل معنا</span></span>
+                    <h2 data-i18n="contact_title">احجز <span class="gold">الشاليه</span> دلوقتي</h2>
+                </div>
+                <div class="cta-banner" data-aos="fade-up">
+                    <h2 data-i18n="cta_question">✨ مستعد تعيش تجربة الفخامة في مارينا مراسي؟</h2>
+                    <div class="phone-cards">
+                        <div class="phone-card">
+                            <span class="phone-number">01044446549</span>
+                            <div class="phone-actions">
+                                <a href="tel:01044446549" class="call-icon-link"><i class="fas fa-phone"></i></a>
+                                <a href="https://wa.me/201044446549" target="_blank" class="wa-icon-link"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                        <div class="phone-card">
+                            <span class="phone-number">01028056604</span>
+                            <div class="phone-actions">
+                                <a href="tel:01028056604" class="call-icon-link"><i class="fas fa-phone"></i></a>
+                                <a href="https://wa.me/201028056604" target="_blank" class="wa-icon-link"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-row">
+                        <div class="social-card">
+                            <a href="https://www.instagram.com/royal_stay9" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@royalstay9" target="_blank"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61589158047313" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.snapchat.com/add/royalstay9" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">
+                <img src="https://i.ibb.co/dsttQM65/logo.png" alt="Royal Stay">
+                <strong>Royal Stay</strong>
+            </div>
+            <p data-i18n="footer_desc">شاليهات فاخرة للإيجار في مراسي، الساحل الشمالي. تجربة حجز استثنائية.</p>
+            <div class="copyright" data-i18n="footer_copyright">© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - جميع الحقوق محفوظة</div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-right"></i></button>
+        <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-left"></i></button>
+        <img src="" alt="صورة مكبرة" id="lightboxImg">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        window.addEventListener('load', function() { window.scrollTo(0, 0); });
+        AOS.init({ duration: 900, once: true, offset: 80 });
+
+        // ---- Translations ----
+        const translations = {
+            ar: {
+                page_title: "شاليه غرفتين مارينا مراسي - Royal Stay | شاليهات فاخرة في الساحل الشمالي",
+                meta_desc: "شاليه غرفتين فاخر للإيجار في مارينا مراسي - مكيف بالكامل، إطلالة على البول، خطوات من المارينا. مطبخ مجهز وشاشة 65 بوصة. احجز الآن مع Royal Stay.",
+                brand_tagline: "شاليهات فاخرة • مراسي",
+                nav_home: "الرئيسية",
+                nav_why: "لماذا نحن",
+                nav_chalets: "الشاليهات",
+                nav_book: "احجز هذا الشاليه",
+                back_to_chalets: "العودة إلى الشاليهات",
+                unit_title: 'شاليه <span class="gold">غرفتين</span> مارينا مراسي',
+                unit_location: "قلب مارينا مراسي - خطوات من المارينا وإطلالة على حمام السباحة",
+                unit_desc: "شاليه غرفتين فاخر في قلب مارينا مراسي، مكيف بالكامل ومجهز بكل اللي تحتاجه. خطوات من المارينا وحمام السباحة، مع إطلالة مباشرة على البول. مثالي للعائلات والأصدقاء.",
+                btn_book_now: "احجز الآن",
+                gallery_eyebrow: "معرض الصور",
+                gallery_title: 'جولة <span class="gold">بصرية</span> في الشاليه',
+                gallery_desc: "اضغط على أي صورة لتكبيرها واستعراض المعرض بالكامل.",
+                details_eyebrow: "المواصفات",
+                details_title: 'تفاصيل <span class="gold">الإقامة</span> الفاخرة',
+                contact_eyebrow: "تواصل معنا",
+                contact_title: 'احجز <span class="gold">الشاليه</span> دلوقتي',
+                cta_question: "✨ مستعد تعيش تجربة الفخامة في مارينا مراسي؟",
+                footer_desc: "شاليهات فاخرة للإيجار في مراسي، الساحل الشمالي. تجربة حجز استثنائية.",
+                footer_copyright: '© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - جميع الحقوق محفوظة',
+                lang_toggle: "English",
+                highlight_chips: [
+                    { icon: "fa-snowflake", text: "مكيف بالكامل" },
+                    { icon: "fa-water-ladder", text: "إطلالة على البول" },
+                    { icon: "fa-wifi", text: "WiFi فائق السرعة" },
+                    { icon: "fa-tv", text: "شاشة 65 بوصة" }
+                ],
+                details_cards: [
+                    {
+                        title: "المساحة والنوم",
+                        icon: "fa-couch",
+                        items: ["غرفتين نوم", "حمام واحد", "سرير كبير + 2 سرير صغير", "مكيف بالكامل (تكييف لكل غرفة + الريسبشن)"],
+                        highlight: "إطلالة مباشرة على حمام السباحة وخطوات من المارينا"
+                    },
+                    {
+                        title: "المطبخ والأجهزة",
+                        icon: "fa-utensils",
+                        items: ["ثلاجة", "غسالة", "مكواة", "ميكروويف", "ماكينة اسبريسو", "فرن", "مروحة أرضية"],
+                        highlight: "شاشة سمارت 65 بوصة + WiFi فائق السرعة"
+                    }
+                ]
+            },
+            en: {
+                page_title: "Two-Bedroom Marina Marassi Chalet - Royal Stay | Luxury Chalets North Coast",
+                meta_desc: "Luxurious two-bedroom chalet for rent in Marina Marassi - fully air-conditioned, pool view, steps from the marina. Fully equipped kitchen & 65\" screen. Book now with Royal Stay.",
+                brand_tagline: "Luxury Chalets • Marassi",
+                nav_home: "Home",
+                nav_why: "Why Us",
+                nav_chalets: "Chalets",
+                nav_book: "Book This Chalet",
+                back_to_chalets: "Back to Chalets",
+                unit_title: 'Two-Bedroom <span class="gold">Marina Marassi</span> Chalet',
+                unit_location: "Heart of Marina Marassi - steps from the marina with pool view",
+                unit_desc: "A luxurious two-bedroom chalet in the heart of Marina Marassi, fully air-conditioned and equipped with everything you need. Steps from the marina and swimming pool, with a direct pool view. Perfect for families and friends.",
+                btn_book_now: "Book Now",
+                gallery_eyebrow: "Photo Gallery",
+                gallery_title: 'A <span class="gold">Visual</span> Tour of the Chalet',
+                gallery_desc: "Click any photo to enlarge and browse the full gallery.",
+                details_eyebrow: "Specifications",
+                details_title: 'Luxury <span class="gold">Stay</span> Details',
+                contact_eyebrow: "Contact Us",
+                contact_title: 'Book <span class="gold">the Chalet</span> Now',
+                cta_question: "✨ Ready to Experience Luxury in Marina Marassi?",
+                footer_desc: "Premium chalets for rent in Marassi, North Coast. An exceptional booking experience.",
+                footer_copyright: '© 2025 <span style="color:var(--gold-light);">Royal Stay</span> - All Rights Reserved',
+                lang_toggle: "عربي",
+                highlight_chips: [
+                    { icon: "fa-snowflake", text: "Fully Air-Conditioned" },
+                    { icon: "fa-water-ladder", text: "Pool View" },
+                    { icon: "fa-wifi", text: "High-Speed WiFi" },
+                    { icon: "fa-tv", text: "65\" Smart TV" }
+                ],
+                details_cards: [
+                    {
+                        title: "Space & Sleeping",
+                        icon: "fa-couch",
+                        items: ["2 Bedrooms", "1 Bathroom", "1 King Bed + 2 Single Beds", "Fully Air-Conditioned (AC in Each Room + Reception)"],
+                        highlight: "Direct pool view and steps from the marina"
+                    },
+                    {
+                        title: "Kitchen & Appliances",
+                        icon: "fa-utensils",
+                        items: ["Refrigerator", "Washing Machine", "Iron", "Microwave", "Espresso Machine", "Oven", "Floor Fan"],
+                        highlight: "65\" Smart TV + High-Speed WiFi"
+                    }
+                ]
+            }
+        };
+
+        const galleryImages = [
+            "https://i.ibb.co/Jw6P5K0S/photo-9-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/ccZGxKHT/photo-10-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/1GVH6fnw/photo-8-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/tpz3VCgd/photo-7-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/B2DjdnYc/photo-6-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/DgPLmJCg/photo-3-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/sYgP8Kh/photo-2-2026-05-05-15-26-21.jpg",
+            "https://i.ibb.co/x8sYN5Wc/photo-1-2026-05-05-15-26-21.jpg"
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        let lightboxCurrentIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        function renderGallery() {
+            let html = '';
+            galleryImages.forEach((imgSrc, index) => {
+                html += `
+                <div class="gallery-item" onclick="openLightbox(${index})" data-aos="fade-up" data-aos-delay="${Math.floor(index/4)*100}">
+                    <img src="${imgSrc}" alt="Marina Marassi Two-Bedroom Chalet - Photo ${index+1}" loading="lazy">
+                </div>`;
+            });
+            galleryGrid.innerHTML = html;
+        }
+
+        function openLightbox(index) {
+            lightboxCurrentIndex = index;
+            lightboxImg.src = galleryImages[lightboxCurrentIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+        function prevImage() {
+            lightboxCurrentIndex = (lightboxCurrentIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImg.src = galleryImages[lightboxCurrentIndex];
+        }
+        function nextImage() {
+            lightboxCurrentIndex = (lightboxCurrentIndex + 1) % galleryImages.length;
+            lightboxImg.src = galleryImages[lightboxCurrentIndex];
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', prevImage);
+        lightboxNext.addEventListener('click', nextImage);
+        lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') prevImage();
+            if (e.key === 'ArrowLeft') nextImage();
+        });
+
+        // ---- Language handling ----
+        let currentLang = 'ar';
+        const htmlEl = document.documentElement;
+
+        function detectLanguage() {
+            const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            return browserLang.startsWith('ar') ? 'ar' : 'en';
+        }
+
+        function renderHighlightChips(lang) {
+            const container = document.getElementById('highlightChips');
+            if (!container) return;
+            const chips = translations[lang].highlight_chips;
+            container.innerHTML = chips.map(chip => `
+                <span class="highlight-chip"><i class="fas ${chip.icon}"></i> ${chip.text}</span>
+            `).join('');
+        }
+
+        function renderDetailsCards(lang) {
+            const container = document.getElementById('detailsGrid');
+            if (!container) return;
+            const cards = translations[lang].details_cards;
+            container.innerHTML = cards.map(card => `
+                <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3><i class="fas ${card.icon}"></i> ${card.title}</h3>
+                    <div class="amenity-list">
+                        ${card.items.map(item => `<div class="amenity-item"><i class="fas fa-check-circle"></i> ${item}</div>`).join('')}
+                    </div>
+                    <div class="spec-highlight">
+                        <i class="fas fa-star"></i>
+                        <span>${card.highlight}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            htmlEl.lang = lang;
+            htmlEl.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (key === 'unit_title' || key === 'gallery_title' || key === 'details_title' || key === 'contact_title' || key === 'footer_copyright') {
+                        el.innerHTML = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            document.title = translations[lang].page_title;
+            document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_desc);
+
+            const toggleBtn = document.getElementById('langToggle');
+            if (toggleBtn) toggleBtn.querySelector('span').textContent = translations[lang].lang_toggle;
+
+            renderHighlightChips(lang);
+            renderDetailsCards(lang);
+            renderGallery();
+            localStorage.setItem('royal-stay-lang', lang);
+        }
+
+        // Initialize
+        renderGallery();
+        const savedLang = localStorage.getItem('royal-stay-lang');
+        const lang = savedLang || detectLanguage();
+        setLanguage(lang);
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(newLang);
+        });
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const navLinks = document.getElementById('navLinks');
+        menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const navbar = document.getElementById('navbar');
+                    const offset = navbar.offsetHeight + 20;
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior:'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
